@@ -1,71 +1,38 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var Calcular = /** @class */ (function () {
-    function Calcular(base, altura) {
-        this.base = base;
-        this.altura = altura;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Calculadora = void 0;
+var Calculadora = /** @class */ (function () {
+    function Calculadora(b, a, lado, raio) {
+        this.base = b;
+        this.altura = a;
+        this.lado = lado;
+        this.raio = raio;
     }
-    Calcular.prototype.getTriangulo = function () {
-        return this.base * this.altura / 2;
+    Calculadora.prototype.getAreaQuadrado = function () {
+        var resultado = Math.pow(this.lado, 2);
+        return resultado;
     };
-    Calcular.prototype.getQuadrado = function () {
-        return this.altura * this.altura;
+    Calculadora.prototype.getAreaRetangulo = function () {
+        var resultado = this.base * this.altura;
+        return 'A área do retangulo é ' + resultado;
     };
-    Calcular.prototype.getRetangulo = function () {
-        return this.base * this.altura;
+    Calculadora.prototype.getAreaCirculo = function () {
+        var resultado = (Math.pow(this.raio, 2)) * 3.14;
+        return 'A área do círculo é ' + resultado;
     };
-    Calcular.prototype.getParalelogramo = function () {
-        return this.base * this.altura;
-    };
-    return Calcular;
+    return Calculadora;
 }());
-var AreasComplexas = /** @class */ (function (_super) {
-    __extends(AreasComplexas, _super);
-    function AreasComplexas(base, altura, baseMenor) {
-        var _this = _super.call(this, base, altura) || this;
-        _this.baseMenor = baseMenor;
-        return _this;
-    }
-    AreasComplexas.prototype.getTrapezio = function () {
-        return (this.base + this.baseMenor) * this.altura / 2;
-    };
-    return AreasComplexas;
-}(Calcular));
-var AreasComplexas2 = /** @class */ (function (_super) {
-    __extends(AreasComplexas2, _super);
-    function AreasComplexas2(base, altura, PI) {
-        var _this = _super.call(this, base, altura) || this;
-        _this.PI = PI;
-        return _this;
-    }
-    AreasComplexas2.prototype.getCirculo = function () {
-        return this.PI * (this.altura * this.altura);
-    };
-    return AreasComplexas2;
-}(Calcular));
-var calcularTriangulo = new Calcular(8, 7);
-console.log(calcularTriangulo.getTriangulo());
-var calcularQuadrado = new Calcular(4, 4);
-console.log(calcularQuadrado.getQuadrado());
-var calcularRetangulo = new Calcular(25, 15);
-console.log(calcularRetangulo.getRetangulo());
-var calcularParalelogramo = new Calcular(7, 4);
-console.log(calcularParalelogramo.getParalelogramo());
-var calcularTrapezio = new AreasComplexas(8, 4, 4);
-console.log(calcularTrapezio.getTrapezio());
-var calcularcirculo = new AreasComplexas2(0, 5, 3.14);
-console.log(calcularcirculo.getCirculo());
+exports.Calculadora = Calculadora;
+var ladoQuadrado = 5;
+var alturaRetangulo = 7;
+var baseRetangulo = 7;
+var raioCirculo = 8;
+var calculadora = new Calculadora(baseRetangulo, alturaRetangulo, ladoQuadrado, raioCirculo);
+//console.log(calculadora.getAreaQuadrado());
+//console.log(calculadora.getAreaRetangulo());
+//console.log(calculadora.getAreaCirculo());
+//function Calc(bas:number,al:number,ld?:number,raio?:number){
+//return (bas**2) *al;
+//}
+//let entrada = Calc(2,1);
+//console.log(`Resultado: ${entrada}`)

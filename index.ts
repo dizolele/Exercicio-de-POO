@@ -1,75 +1,49 @@
-class Calcular {
+export class Calculadora {
     base: number 
-    altura: number
+    altura: number 
+    lado: number
+    raio: number
+
+    constructor(b: number, a: number, lado: number, raio: number) {
+        this.base = b
+        this.altura = a
+        this.lado = lado
+        this.raio = raio
+    }
+
+    getAreaQuadrado(): number  {
+        let resultado = this.lado**2
+        return  resultado
+    }
+
+    getAreaRetangulo(): string {
+        let resultado = this.base * this.altura;
+        return 'A área do retangulo é ' + resultado
+    }
+
+    getAreaCirculo(): string {
+        let resultado = (this.raio**2) * 3.14
+        return 'A área do círculo é ' + resultado
+    }
     
-
-    constructor(base: number, altura: number) {
-        this.base = base
-        this.altura = altura
-        
-    }
-
-    getTriangulo(): number {
-        return this.base * this.altura / 2
-    }
-
-    getQuadrado(): number {
-        return this.altura*this.altura
-    }
-
-    getRetangulo(): number {
-        return this.base * this.altura
-    }
-
-    getParalelogramo(): number {
-        return this.base * this.altura
-    }
-
     
 }
 
-class AreasComplexas extends Calcular {
-    constructor(
-        base: number,
-        altura: number,
-       private baseMenor: number
-    ) {
-        super(base, altura)
-    }
+let ladoQuadrado = 5
+let alturaRetangulo = 7
+let baseRetangulo = 7
+let raioCirculo = 8
 
-    getTrapezio(): number {
-        return (this.base + this.baseMenor) * this.altura / 2
-    }
-}
+let calculadora = new Calculadora(baseRetangulo, alturaRetangulo, ladoQuadrado, raioCirculo)
+//console.log(calculadora.getAreaQuadrado());
+//console.log(calculadora.getAreaRetangulo());
+//console.log(calculadora.getAreaCirculo());
 
-class AreasComplexas2 extends Calcular {
-    constructor(
-        base: number,
-        altura: number,
-        private PI: number
-    ) {
-        super(base, altura)
-    }
 
-    getCirculo(): number {
-        return this.PI * (this.altura*this.altura)
-    }
-}
+//function Calc(bas:number,al:number,ld?:number,raio?:number){
+    //return (bas**2) *al;
+//}
 
-let calcularTriangulo = new Calcular(8, 7);
-console.log(calcularTriangulo.getTriangulo());
+//let entrada = Calc(2,1);
 
-let calcularQuadrado = new Calcular(4, 4);
-console.log(calcularQuadrado.getQuadrado());
-
-let calcularRetangulo = new Calcular(25, 15);
-console.log(calcularRetangulo.getRetangulo());
-
-let calcularParalelogramo = new Calcular(7, 4);
-console.log(calcularParalelogramo.getParalelogramo());
-
-let calcularTrapezio = new AreasComplexas(8, 4, 4)
-console.log(calcularTrapezio.getTrapezio());
-
-let calcularcirculo = new AreasComplexas2(0, 5, 3.14);
-console.log(calcularcirculo.getCirculo());
+//console.log(`Resultado: ${entrada}`)
